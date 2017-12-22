@@ -17,6 +17,7 @@ public class ComponentInWindow extends JFrame {
     JTextArea area;
     JButton buttonFile;
     JButton buttonDir;
+    JTextField numberColText;
 
     ReaderListen listen;
 
@@ -71,6 +72,11 @@ public class ComponentInWindow extends JFrame {
 
             }
         });
+
+        add(new JLabel("选择输出命名方式："));
+        numberColText = new JTextField("1",13);
+        add(numberColText);
+        listen.setTextCol(numberColText);
 
         add(new JLabel("按钮:"));
         button = new JButton("确认");

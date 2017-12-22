@@ -15,9 +15,12 @@ public class Read {
     static String fileName;
 
 
-    public static void readData(String path, String sourthPath) {
+    public static void readData(String path, String sourthPath,Integer postionCol) {
         mTitle = new ArrayList<>();
         mContent = new ArrayList<>();
+
+        if(postionCol == null)
+            postionCol = 1;
 
         Workbook wb = null;
         Sheet sheet = null;
@@ -42,7 +45,7 @@ public class Read {
                         mContent.clear();
                         for (int j = 0; j < colnum; j++) {
                             mContent.add((String) ReadExcel.getCellFormatValue(sheet.getRow(i).getCell(j)));
-                            if (j == 1)
+                            if (j == postionCol)
                                 fileName = (String) ReadExcel.getCellFormatValue(sheet.getRow(i).getCell(j));
                         }
                     }

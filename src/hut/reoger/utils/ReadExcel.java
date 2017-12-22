@@ -44,7 +44,7 @@ public class ReadExcel {
             //判断cell类型
             switch(cell.getCellType()){
                 case Cell.CELL_TYPE_NUMERIC:{
-                    cellValue = String.valueOf(cell.getNumericCellValue());
+                    cellValue = String.valueOf((int)cell.getNumericCellValue());
                     break;
                 }
                 case Cell.CELL_TYPE_FORMULA:{
