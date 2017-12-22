@@ -54,7 +54,8 @@ public class ReadExcel {
                         cellValue = cell.getDateCellValue();
                     }else{
                         //数字
-                        cellValue = String.valueOf(cell.getNumericCellValue());
+                        cellValue = String.valueOf((int)cell.getNumericCellValue());
+
                     }
                     break;
                 }

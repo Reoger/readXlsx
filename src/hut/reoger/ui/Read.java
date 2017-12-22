@@ -47,7 +47,7 @@ public class Read {
                         }
                     }
                     try {
-                        PrintToPng.createImage(mTitle, mContent, null, sourthPath + fileName + ".png", 1200, 60);
+                        PrintToPng.createImage(mTitle, mContent, null, sourthPath + fileName + ".png", 1300, 60);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

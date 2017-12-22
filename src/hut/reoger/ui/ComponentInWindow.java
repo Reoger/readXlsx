@@ -2,20 +2,12 @@ package hut.reoger.ui;
 
 import hut.reoger.listener.ReaderListen;
 
-import java.awt.FlowLayout;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPasswordField;
-import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.text.JTextComponent;
+
+
+import javax.swing.*;
 
 public class ComponentInWindow extends JFrame {
 
@@ -23,6 +15,8 @@ public class ComponentInWindow extends JFrame {
     JTextField text;
     JButton button;
     JTextArea area;
+    JButton buttonFile;
+    JButton buttonDir;
 
     ReaderListen listen;
 
@@ -37,15 +31,46 @@ public class ComponentInWindow extends JFrame {
         listen = new ReaderListen();
 
         add(new JLabel("文件源:"));
-        textSourth = new JTextField(20);
+        textSourth = new JTextField(15);
         add(textSourth);
         listen.setJTextField(textSourth);
 
+        buttonFile = new JButton("选择");
+        add(buttonFile);
+        buttonFile.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new JFrame("chooser");
+                JFileChooser chooser = new JFileChooser();
+                int returnVal = chooser.showOpenDialog(frame);
+                if (returnVal == JFileChooser.APPROVE_OPTION) {
+                    textSourth.setText(chooser.getSelectedFile().getAbsolutePath());
+                }
+            }
+        });
+
+
         add(new JLabel("输出源:"));
-        text = new JTextField(20);
+        text = new JTextField(15);
         add(text);
         listen.setTextSource(text);
 
+        buttonDir = new JButton("选择");
+        add(buttonDir);
+
+        buttonDir.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new JFrame("chooser");
+                JFileChooser jf = new JFileChooser();
+                jf.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                int returnVal = jf.showOpenDialog(frame);
+                if(returnVal==JFileChooser.APPROVE_OPTION){
+                    text.setText(jf.getSelectedFile().getPath()+"\\");
+                }
+
+            }
+        });
 
         add(new JLabel("按钮:"));
         button = new JButton("确认");

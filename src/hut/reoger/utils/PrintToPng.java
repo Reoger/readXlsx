@@ -15,7 +15,7 @@ public class PrintToPng {
     public static void createImage(List<String> titles, List<String> contents, Font font, String outFileStr,
                                     Integer width, Integer height) throws Exception {
         if(font == null)
-            font = new Font("微软雅黑", Font.PLAIN, 11);
+            font = new Font("微软雅黑", Font.PLAIN, 12);
 
 
         int index = outFileStr.lastIndexOf("\\");
@@ -48,7 +48,7 @@ public class PrintToPng {
         for(int i=0;i<titles.size();i++){
             g.drawLine(x,0,x,height);
             g.drawString(titles.get(i),x+ascent,(y-ascent-descent)/2+ascent);
-            x+=80;
+            x+=88;
         }
 
 
@@ -58,7 +58,7 @@ public class PrintToPng {
         for (int i = 0; i < contents.size(); i++) {
 
             g.drawString(contents.get(i),x+ascent,(y+ascent+descent)/2+2*ascent);
-            x+=80;
+            x+=88;
         }
 
         g.dispose();
